@@ -60,7 +60,7 @@ def normalize_OC_instrument_to_newedge_format(ne_instrument):
 
 # parse the raw mysql rows and convert to usable formats
 
-def parse_transactions(mysql_rows):
+def parse_trades(mysql_rows):
     return [[normalize_OC_instrument_to_newedge_format( clean_instrument_name(t[2]) ),
              clean_trade_quantity(t[0], t[1]),
              clean_price(t[3])] for t in mysql_rows]
@@ -91,11 +91,11 @@ class OptionsCity(object):
                              db=self.db)
         cursor = conn.cursor()
 
-        cursor.execute(self.SQL_transactions % commits_ago)
+        cursor.execute(self.SQL_trades % commits_ago)
         rows = cursor.fetchall()
         conn.close()
-        transactions = parse_transactions(rows)
-        return transactions
+        trades = parse_trades(rows)
+        return trades
 
     def get_positions(self):
         """Retrieve net position from Options City."""
@@ -113,8 +113,8 @@ class OptionsCity(object):
         positions = parse_positions(rows)
         return positions
 
-    # transactions since last commit
-    SQL_transactions = """SELECT TRADES_SUB.side,
+    # trades since last commit
+    SQL_trades = """SELECT TRADES_SUB.side,
                              TRADES_SUB.tradedQuantity,
                              INSTRUMENTS.displaySymbol,
                              TRADES_SUB.tradedPrice
