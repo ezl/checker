@@ -90,22 +90,22 @@ class NewEdgeWebsite(object):
         print "Retrieving real time trades..."
         url = "https://pulsedataport.newedgegroup.com/wps/PA_dataport-report-na/crystalExport.jsp?exportFormat=CSV&repid=31934186&archid=31934561"
         page = self._curl(url)
-        return page
+        trades = parse_trades(page)
+        return trades
 
     def retrieve_positions(self):
         print "Retrieving open position..."
         url = "https://pulsedataport.newedgegroup.com/wps/PA_dataport-report-na/crystalExport.jsp?exportFormat=CSV&repid=31934370&archid=33260099"
-        page =self._curl(url)
-        return page
+        page = self._curl(url)
+        positions = parse_positions(page)
+        return positions
 
 userid = "ERICLIU"
 password = "Ctc12345"
 
 ne = NewEdgeWebsite(userid=userid, password=password)
 ne.connect()
-p = ne.retrieve_positions()
-t = ne.retrieve_trades()
+positions = ne.retrieve_positions()
+trades = ne.retrieve_trades()
 
-positions = parse_positions(p)
-trades = parse_trades(t)
 
