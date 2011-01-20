@@ -1,13 +1,15 @@
-#from optionscity import (positions as OC_positions,
-#                         trades as OC_trades)
-from newedge import (positions as NE_positions,
-                     trades as NE_trades)
-
 from optionscity import OptionsCity
+from newedge import NewEdgeWebsite
+
 
 oc = OptionsCity(host="10.51.132.92", user="eric", passwd="ziu", db="optionscity")
 OC_positions = oc.get_positions()
 OC_trades = oc.get_trades()
+
+ne = NewEdgeWebsite(userid="ERICLIU", password="Ctc12345")
+ne.connect()
+NE_positions = ne.retrieve_positions()
+NE_trades = ne.retrieve_trades()
 
 # position matching
 

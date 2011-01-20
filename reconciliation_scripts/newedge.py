@@ -99,13 +99,3 @@ class NewEdgeWebsite(object):
         page = self._curl(url)
         positions = parse_positions(page)
         return positions
-
-userid = "ERICLIU"
-password = "Ctc12345"
-
-ne = NewEdgeWebsite(userid=userid, password=password)
-ne.connect()
-positions = ne.retrieve_positions()
-trades = ne.retrieve_trades()
-
-
