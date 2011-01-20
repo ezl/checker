@@ -2,8 +2,6 @@ import MySQLdb as mysql
 from datetime import date, timedelta
 import re
 
-# TODO: Helpers -- All this garbage should eventually make it into the OptionsCity class
-
 # Regexes that I'll use to convert the OC name to the NE name
 
 RE_instrument = re.compile(r'(?P<product>\w{1,3})'
