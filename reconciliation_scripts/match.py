@@ -1,7 +1,7 @@
 #from optionscity import (positions as OC_positions,
-#                         transactions as OC_trades)
+#                         trades as OC_trades)
 from newedge import (positions as NE_positions,
-                     transactions as NE_trades)
+                     trades as NE_trades)
 
 from optionscity import OptionsCity
 

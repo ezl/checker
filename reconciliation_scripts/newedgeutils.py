@@ -31,7 +31,7 @@ def clean_instrument_name(description):
 
 # parse the csv and put them into lists to match the OC lists
 
-def parse_transactions(csv):
+def parse_trades(csv):
     headers, rows = separate_headers(csv)
     relevant_columns = ["B/S", "Quantity", "Contract Description", "Trade_price"]
     relevant_column_indices = map(lambda x: headers.index(x), relevant_columns)
