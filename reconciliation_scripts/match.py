@@ -42,8 +42,6 @@ OC_positions_full, NE_positions_full = OC_positions, NE_positions
 
 joined = outer_join_positions(OC_positions, NE_positions)
 position_exceptions = filter(lambda x: x[1] != x[2], joined)
-print "joined"
-print joined
 
 # trade matching
 
@@ -120,6 +118,11 @@ def match_spread_legs(oc, ne, matched_oc_legs=[], matched_ne_legs=[]):
     return oc, ne, matched_oc_legs, matched_ne_legs
 
 def are_spreads(oc, ne):
+    """Determine if the contents of 2 lists are equivalent.
+
+       Takes 2 lists of Trade objects, then determines if they are equivalent.
+       If the cash matches and the quantities of each instrument are the same, it is a spread.
+    """
     pass
 
 # save these suckers for reference
