@@ -1,4 +1,3 @@
-
 class Trade(object):
     """A generic trade class.
 
@@ -10,6 +9,14 @@ class Trade(object):
         self.quantity = quantity
         self.price = price
         # contract_type, executing broker, conterparty, house, house, exchange, electronic, time, spread, blah blah
+
+    def as_xml(self):
+        pass
+        # return Trade details as xml
+
+    def as_dict(self):
+        pass
+        # return Trade details as dict
 
 class Position(object):
     """A generic position class.
